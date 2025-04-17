@@ -108,30 +108,6 @@
       text-decoration: none;
       color: #007bff;
     }
-    .table-container {
-      margin-top: 30px;
-      border-top: 1px solid #ccc;
-      padding-top: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    th {
-      background-color: #007bff;
-      color: white;
-      font-weight: bold;
-      text-align: left;
-    }
-    td {
-      text-align: left;
-      font-weight: normal;
-    }
   </style>
 </head>
 <body>
@@ -172,52 +148,6 @@
     </div>
 
     <button onclick="downloadPDF()">⬇️ Download PDF Report</button>
-  </div>
-
-  <div class="table-container">
-    <h3>Medical Report Summary</h3>
-    <table id="medical-summary-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Name</td>
-          <td id="table-name"></td>
-        </tr>
-        <tr>
-          <td>Age</td>
-          <td id="table-age"></td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td id="table-weight"></td>
-        </tr>
-        <tr>
-          <td>Heart Rate</td>
-          <td id="table-hr"></td>
-        </tr>
-        <tr>
-          <td>Blood Pressure</td>
-          <td id="table-bp"></td>
-        </tr>
-        <tr>
-          <td>Temperature</td>
-          <td id="table-temp"></td>
-        </tr>
-        <tr>
-          <td>Problem</td>
-          <td id="table-problem"></td>
-        </tr>
-        <tr>
-          <td>Status</td>
-          <td id="table-status"></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 
   <script>
@@ -276,17 +206,6 @@
       currentMeds = "Paracetamol (if fever).";
       currentPrecautions = "Rest, Stay hydrated.";
 
-      // Update the summary table
-      document.getElementById('table-name').innerText = name;
-      document.getElementById('table-age').innerText = age;
-      document.getElementById('table-weight').innerText = weight;
-      document.getElementById('table-hr').innerText = hr;
-      document.getElementById('table-bp').innerText = `${bpSystolic} / ${bpDiastolic}`;
-      document.getElementById('table-temp').innerText = temp;
-      document.getElementById('table-problem').innerText = problem;
-      document.getElementById('table-status').innerText = vitalsStatus || currentStatus;
-
-      // Show the status result
       document.getElementById('status').innerHTML = `
         <strong>Status:</strong> ${currentStatus} <br>
         <strong>Advice:</strong> ${currentAdvice} <br>
@@ -295,7 +214,6 @@
       `;
     }
 
-    // Function for downloading the PDF
     function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
